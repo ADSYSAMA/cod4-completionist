@@ -1,0 +1,10 @@
+version:  '3.7'
+
+services:
+  mysql:
+    ports:
+      - "3391:3306"
+  
+  nginx:
+    ports:
+      - '8441:80'
