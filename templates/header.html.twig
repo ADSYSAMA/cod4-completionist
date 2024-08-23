@@ -1,0 +1,29 @@
+<nav class="navbar">
+    <a href="/" class="navbar-brand">
+        <img src="{{ asset('img/logo.png') }}" alt="logo">
+    </a>
+    <ul class="nav nav-underline justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Wiki</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ url('wiki_weapons') }}">Weapons</a></li>
+                <li><a class="dropdown-item" href="{{ url('wiki_attachments') }}">Attachments</a></li>
+                <li><a class="dropdown-item" href="{{ url('wiki_lethals') }}">Lethals</a></li>
+                <li><a class="dropdown-item" href="{{ url('wiki_tacticals') }}">Tacticals</a></li>
+                <li><a class="dropdown-item" href="{{ url('wiki_perks') }}">Perks</a></li>
+                <li><a class="dropdown-item" href="{{ url('wiki_streaks') }}">Streaks</a></li>
+                <li><a class="dropdown-item" href="{{ url('wiki_maps') }}">Maps</a></li>
+                <li><a class="dropdown-item" href="{{ url('wiki_campaign_missions') }}">Campaign Missions</a></li>
+            </ul>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Challenges</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ url('challenges_camouflages') }}">Camouflages</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>

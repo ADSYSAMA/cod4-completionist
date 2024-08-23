@@ -10,6 +10,17 @@ RUN docker-php-ext-install intl gd
 RUN docker-php-ext-install pdo_mysql
 RUN docker-php-ext-install zip
 
+# Install nodejs / npm via nvm
+ENV NODE_VERSION=20
+ENV NVM_DIR=/usr/local/nvm
+RUN mkdir -p $NVM_DIR \
+    && curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash \
+    && . $NVM_DIR/nvm.sh \
+    && nvm install $NODE_VERSION \
+    && nvm alias default $NODE_VERSION \
+    && nvm use default
+
+
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash

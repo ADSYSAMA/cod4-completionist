@@ -1,0 +1,19 @@
+@import "abstracts/colors";
+@import "abstracts/fonts";
+@import "abstracts/variables";
+
+@import "layout/header";
+@import "layout/main";
+@import "layout/footer";
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+html {
+
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
