@@ -69,12 +69,12 @@ class Weapon
         return $this;
     }
 
-    public function getCategory(): ?PerkCategory
+    public function getCategory(): ?WeaponCategory
     {
         return $this->category;
     }
 
-    public function setCategory(PerkCategory $category): static
+    public function setCategory(WeaponCategory $category): static
     {
         $this->category = $category;
 
