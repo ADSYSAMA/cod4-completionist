@@ -22,7 +22,9 @@
         "symfony/runtime": "7.1.*",
         "symfony/validator": "7.1.*",
         "symfony/yaml": "7.1.*",
-        "symfonycasts/sass-bundle": "^0.7.0"
+        "symfonycasts/sass-bundle": "^0.7.0",
+        "twig/extra-bundle": "^3.11",
+        "twig/string-extra": "^3.11"
     },
     "config": {
         "allow-plugins": {

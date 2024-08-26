@@ -2,11 +2,20 @@
 @import "abstracts/fonts";
 @import "abstracts/variables";
 
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
 @import "layout/header";
 @import "layout/main";
 @import "layout/footer";
+@import "layout/text";
 
-@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "component/wiki_entity";
+
+@import "component/weapon";
+@import "component/perk";
+@import "component/streak";
+@import "component/map";
+@import "component/campaign_mission";
 
 html {
 

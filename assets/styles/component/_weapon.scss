@@ -1,0 +1,13 @@
+.weapons {
+  .weapon-type {
+    .weapon-category {
+      .weapon {
+        display: flex;
+        flex-direction: column;
+        img {
+          margin: auto;
+        }
+      }
+    }
+  }
+}

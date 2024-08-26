@@ -1,0 +1,9 @@
+.map {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  img {
+    max-width: 20rem;
+    margin-bottom: auto;
+  }
+}

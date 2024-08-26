@@ -1,28 +1,65 @@
+{% set route = app.request.get('_route') %}
 <nav class="navbar">
     <a href="/" class="navbar-brand">
         <img src="{{ asset('img/logo.png') }}" alt="logo">
     </a>
     <ul class="nav nav-underline justify-content-end">
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
+            <a class="nav-link {% if route is same as 'home' %}active{% endif %}" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Wiki</a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{ url('wiki_weapons') }}">Weapons</a></li>
-                <li><a class="dropdown-item" href="{{ url('wiki_attachments') }}">Attachments</a></li>
-                <li><a class="dropdown-item" href="{{ url('wiki_lethals') }}">Lethals</a></li>
-                <li><a class="dropdown-item" href="{{ url('wiki_tacticals') }}">Tacticals</a></li>
-                <li><a class="dropdown-item" href="{{ url('wiki_perks') }}">Perks</a></li>
-                <li><a class="dropdown-item" href="{{ url('wiki_streaks') }}">Streaks</a></li>
-                <li><a class="dropdown-item" href="{{ url('wiki_maps') }}">Maps</a></li>
-                <li><a class="dropdown-item" href="{{ url('wiki_campaign_missions') }}">Campaign Missions</a></li>
+                <li>
+                    <a class="dropdown-item {% if route is same as 'wiki_weapons' %}active{% endif %}" href="{{ url('wiki_weapons') }}">
+                        Weapons
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item {% if route is same as 'wiki_attachments' %}active{% endif %}" href="{{ url('wiki_attachments') }}">
+                        Attachments
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item {% if route is same as 'wiki_lethals' %}active{% endif %}" href="{{ url('wiki_lethals') }}">
+                        Lethals
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item {% if route is same as 'wiki_tacticals' %}active{% endif %}" href="{{ url('wiki_tacticals') }}">
+                        Tacticals
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item {% if route is same as 'wiki_perks' %}active{% endif %}" href="{{ url('wiki_perks') }}">
+                        Perks
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item {% if route is same as 'wiki_streaks' %}active{% endif %}" href="{{ url('wiki_streaks') }}">
+                        Streaks
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item {% if route is same as 'wiki_maps' %}active{% endif %}" href="{{ url('wiki_maps') }}">
+                        Maps
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item {% if route is same as 'wiki_campaign_missions' %}active{% endif %}" href="{{ url('wiki_campaign_missions') }}">
+                        Campaign Missions
+                    </a>
+                </li>
             </ul>
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Challenges</a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{ url('challenges_camouflages') }}">Camouflages</a></li>
+                <li>
+                    <a class="dropdown-item {% if route is same as 'challenges_camouflages' %}active{% endif %}" href="{{ url('challenges_camouflages') }}">
+                        Camouflages
+                    </a>
+                </li>
             </ul>
         </li>
     </ul>

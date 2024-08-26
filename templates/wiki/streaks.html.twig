@@ -4,4 +4,16 @@
 
     <h1>{{ title }}</h1>
 
+    <div class="row">
+        {% for streak in streaks %}
+            {% set streakNameCamel = streak.getName()|u.camel %}
+            <div class="wiki-entity streak" id="{{ streakNameCamel }}">
+                <img src="{{ asset('img/wiki/streak/' ~ streakNameCamel ~ '.png') }}" alt="{{ streak.getName() }}">
+                <h4>{{ streak.getName() }}</h4>
+                <p>Unlock level : {{ streak.getUnlockLevel() }}</p>
+                <p>Consecutive kills needed  : {{ streak.getUnlockNbKills() }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
 {% endblock %}

@@ -4,4 +4,25 @@
 
     <h1>{{ title }}</h1>
 
+    <div class="weapons">
+        {% for weaponTypeName,weaponTypes in weapons %}
+            <div class="wiki-type weapon-type" id="{{ weaponTypeName }}">
+                <h2><b>{{ weaponTypeName|capitalize }}</b></h2>
+                {% for weaponCategoryName,weaponCategories in weaponTypes %}
+                    <div class="wiki-category weapon-category" id="{{ weaponCategoryName }}">
+                        <h3><u>{{ weaponCategoryName }}</u></h3>
+                        {% for weapon in weaponCategories %}
+                            {% set weaponNameCamel = weapon.getName()|u.camel %}
+                            <div class="wiki-entity weapon" id="{{ weaponNameCamel }}">
+                                <img src="{{ asset('img/wiki/weapon/' ~ weaponNameCamel ~ '.png') }}" alt="{{ weapon.getName() }}">
+                                <h4>{{ weapon.getName() }}</h4>
+                                <p>Unlock level : {{ weapon.getUnlockLevel() }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+
 {% endblock %}

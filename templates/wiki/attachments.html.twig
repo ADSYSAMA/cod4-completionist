@@ -4,4 +4,14 @@
 
     <h1>{{ title }}</h1>
 
+    <div class="row">
+        {% for attachment in attachments %}
+            {% set attachmentNameCamel = attachment.getName()|u.camel %}
+            <div class="wiki-entity attachment" id="{{ attachmentNameCamel }}">
+                <img src="{{ asset('img/wiki/attachment/' ~ attachmentNameCamel ~ '.png') }}" alt="{{ attachment.getName() }}">
+                <h4>{{ attachment.getName() }}</h4>
+            </div>
+        {% endfor %}
+    </div>
+
 {% endblock %}

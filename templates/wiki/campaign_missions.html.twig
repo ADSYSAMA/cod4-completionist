@@ -4,4 +4,19 @@
 
     <h1>{{ title }}</h1>
 
+    <div class="row">
+        {% for campaign_mission in campaign_missions %}
+            {% set campaignMissionNameCamel = campaign_mission.getName()|u.camel %}
+            <div class="wiki-entity campaign_mission" id="{{ campaignMissionNameCamel }}">
+                <img src="{{ asset('img/wiki/campaign_mission/' ~ campaignMissionNameCamel ~ '.png') }}" alt="{{ campaign_mission.getName() }}">
+                <h4>{{ campaign_mission.getName() }}</h4>
+                <p>Number : {{ campaign_mission.getNumber() }}</p>
+                <p>Location : {{ campaign_mission.getLocation() }}</p>
+                {% if campaign_mission.isBonusMission() %}
+                    <p><b>Bonus Level</b></p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
 {% endblock %}

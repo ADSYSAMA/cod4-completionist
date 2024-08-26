@@ -1,0 +1,9 @@
+.streak {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  img {
+    max-width: 4rem;
+    margin: auto 0;
+  }
+}

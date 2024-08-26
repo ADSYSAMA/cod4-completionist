@@ -4,4 +4,19 @@
 
     <h1>{{ title }}</h1>
 
+    <div class="row">
+        {% for map in maps %}
+            {% set mapNameCamel = map.getName()|u.camel %}
+            <div class="wiki-entity map" id="{{ mapNameCamel }}">
+                <img src="{{ asset('img/wiki/map/' ~ mapNameCamel ~ '.png') }}" alt="{{ map.getName() }}">
+                <h4>{{ map.getName() }}</h4>
+                <p>Size : {{ map.getSize().value|capitalize }}</p>
+                <p>Location : {{ map.getLocation() }}</p>
+                {% if map.isDlc() %}
+                    <p><b>DLC</b></p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
 {% endblock %}

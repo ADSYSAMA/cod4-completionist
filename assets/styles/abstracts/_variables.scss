@@ -6,7 +6,10 @@ $dark: $dark-green;
 
 $body-bg: $white;
 
-$font-size-base: 1.1rem;
+$font-size-base: 1rem;
+$h3-font-size:                $font-size-base * 1.5;
+$h4-font-size:                $font-size-base * 1.25;
+$h5-font-size:                $font-size-base * 1.1;
 
 $headings-color: $primary;
 $body-color: $primary;

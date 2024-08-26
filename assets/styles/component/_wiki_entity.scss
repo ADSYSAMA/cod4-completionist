@@ -1,0 +1,14 @@
+.wiki-type {
+  @extend .row, .mb-5;
+  h2 {
+    @extend .mb-3
+  }
+}
+
+.wiki-category {
+  @extend .row, .mb-5;
+}
+
+.wiki-entity {
+  @extend .col-12, .col-md-3, .gy-4;
+}

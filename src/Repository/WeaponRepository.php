@@ -16,28 +16,15 @@ class WeaponRepository extends ServiceEntityRepository
         parent::__construct($registry, Weapon::class);
     }
 
-//    /**
-//     * @return Weapon[] Returns an array of Weapon objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('w')
-//            ->andWhere('w.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('w.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function findWeaponsByTypeAndCategory(): array
+    {
+        $weapons = [];
+        $allWeapons = $this->findBy([], ['unlock_level' => 'ASC']);
 
-//    public function findOneBySomeField($value): ?Weapon
-//    {
-//        return $this->createQueryBuilder('w')
-//            ->andWhere('w.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+        foreach ($allWeapons as $weapon) {
+            $weapons[$weapon->getType()->value][$weapon->getCategory()->value][] = $weapon;
+        }
+
+        return $weapons;
+    }
 }

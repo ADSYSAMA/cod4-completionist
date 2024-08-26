@@ -4,4 +4,15 @@
 
     <h1>{{ title }}</h1>
 
+    <div class="row">
+        {% for lethal in lethals %}
+            {% set lethalNameCamel = lethal.getName()|u.camel %}
+            <div class="wiki-entity lethal" id="{{ lethalNameCamel }}">
+                <img src="{{ asset('img/wiki/lethal/' ~ lethalNameCamel ~ '.png') }}" alt="{{ lethal.getName() }}">
+                <h4>{{ lethal.getName() }}</h4>
+                <p>Unlock level : {{ lethal.getUnlockLevel() }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
 {% endblock %}

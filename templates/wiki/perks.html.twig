@@ -4,4 +4,20 @@
 
     <h1>{{ title }}</h1>
 
+    <div class="row">
+        {% for perkCategoryName,perkCategories in perks %}
+            <div class="wiki-category perk-category" id="Slot{{ perkCategoryName }}">
+                <h3><u>Slot {{ perkCategoryName }}</u></h3>
+                {% for perk in perkCategories %}
+                    {% set perkNameCamel = perk.getName()|u.camel %}
+                    <div class="wiki-entity perk" id="{{ perkNameCamel }}">
+                        <img src="{{ asset('img/wiki/perk/' ~ perkNameCamel ~ '.png') }}" alt="{{ perk.getName() }}">
+                        <h4>{{ perk.getName() }}</h4>
+                        <p>Unlock level : {{ perk.getUnlockLevel() }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+
 {% endblock %}
