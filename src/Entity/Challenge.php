@@ -6,6 +6,8 @@ use App\Constantes\Challenge\ChallengeGamemode;
 use App\Entity\Challenges\CamouflageChallenge;
 use App\Entity\Challenges\CampaignChallenge;
 use App\Repository\ChallengeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\InheritanceType('JOINED')]
@@ -23,6 +25,17 @@ class Challenge
 
     #[ORM\Column(enumType: ChallengeGamemode::class)]
     private ?ChallengeGamemode $gamemode = null;
+
+    /**
+     * @var Collection<int, User>
+     */
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'completedChallenges')]
+    private Collection $users;
+
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -49,6 +62,33 @@ class Challenge
     public function setGamemode(ChallengeGamemode $gamemode): static
     {
         $this->gamemode = $gamemode;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): static
+    {
+        if (!$this->users->contains($user)) {
+            $this->users->add($user);
+            $user->addCompletedChallenge($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): static
+    {
+        if ($this->users->removeElement($user)) {
+            $user->removeCompletedChallenge($this);
+        }
 
         return $this;
     }

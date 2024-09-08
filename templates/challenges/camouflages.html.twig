@@ -12,9 +12,9 @@
         {% for weaponCategoryName,weaponCamouflages in camouflagesChallenges %}
             <h2>{{ weaponCategoryName }}</h2>
             <div class="camouflage-weapon-category" id="{{ weaponCategoryName }}">
-                {% for weaponName,camouflages in weaponCamouflages.weapons %}
+                {% for weaponName,weaponData in weaponCamouflages.weapons %}
                     {% set isGold = weaponName is same as weaponCamouflages.goldWeapon %}
-                    <div class="camouflage-weapon {% if isGold %}gold{% endif %}">
+                    <div class="camouflage-weapon{% if isGold %} gold{% endif %}{% if weaponData.checked %} checked{% endif %}">
                         <div class="row">
                             <div class="col">
                                 <h3 class="weapon-name"
@@ -27,25 +27,26 @@
                             </div>
                         </div>
                         <div class="row camouflages-row">
-                            {% for camouflage in camouflages %}
-                                {% set camouflageNameCamel = camouflage.getName()|u.camel %}
-                                {% set camouflageChallengeId = 'challenge.camouflage.' ~ camouflage.getType().value %}
+                            {% for camouflage in weaponData.camouflages %}
+                                {% set camouflageNameCamel = camouflage.entity.getName()|u.camel %}
+                                {% set camouflageChallengeLabelId = 'challenge.camouflage.' ~ camouflage.entity.getType().value %}
 
-                                {% set isDefault = camouflage.getType() is same as constant('App\\Constantes\\Challenge\\Camouflage\\CamouflageType::DEFAULT') %}
+                                {% set isDefault = camouflage.entity.getType() is same as constant('App\\Constantes\\Challenge\\Camouflage\\CamouflageType::DEFAULT') %}
                                 {% if isDefault %}
-                                    {% set camouflageChallenge = camouflageChallengeId|trans %}
+                                    {% set camouflageChallenge = camouflageChallengeLabelId|trans %}
                                 {% else %}
-                                    {% set camouflageChallenge = camouflage.getAmount() ~ ' ' ~ camouflageChallengeId|trans %}
+                                    {% set camouflageChallenge = camouflage.entity.getAmount() ~ ' ' ~ camouflageChallengeLabelId|trans %}
                                 {% endif %}
 
                                 <div class="col">
-                                    <div class="camouflage {{ camouflage.getType().value }}"
-                                         id="{{ camouflage.getName() }}"
+                                    <div class="camouflage {{ camouflage.entity.getType().value }} {% if camouflage.checked %}checked{% endif %}"
+                                         id="{{ camouflage.entity.getName() }}"
                                          data-bs-toggle="tooltip"
-                                         data-bs-title="{{ camouflage.getName() ~ ' - ' ~ camouflageChallenge|trans }}"
+                                         data-bs-title="{{ camouflage.entity.getName() ~ ' - ' ~ camouflageChallenge|trans }}"
+                                         data-id="{{ camouflage.entity.getId() }}"
                                     >
                                         <img src="{{ asset('img/challenge/camouflage/' ~ camouflageNameCamel ~ '.png') }}"
-                                             alt="{{ camouflage.getName() }}"
+                                             alt="{{ camouflage.entity.getName() }}"
                                         >
                                         <div class="overlay"></div>
                                         <i class="bi bi-check"></i>
