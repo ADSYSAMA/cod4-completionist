@@ -14,7 +14,9 @@
             <div class="camouflage-weapon-category" id="{{ weaponCategoryName }}">
                 {% for weaponName,weaponData in weaponCamouflages.weapons %}
                     {% set isGold = weaponName is same as weaponCamouflages.goldWeapon %}
-                    <div class="camouflage-weapon{% if isGold %} gold{% endif %}{% if weaponData.checked %} checked{% endif %}">
+                    <div class="camouflage-weapon{% if isGold %} gold{% endif %}{% if weaponData.checked %} checked{% endif %}"
+                         data-id="{% if weaponData.id is defined %}{{ weaponData.id }}{% endif %}"
+                    >
                         <div class="row">
                             <div class="col">
                                 <h3 class="weapon-name"

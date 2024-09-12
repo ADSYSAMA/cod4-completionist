@@ -17,12 +17,12 @@ class LoginFormType extends AbstractType
         $builder
             ->add('_username', EmailType::class, [
                 'attr' => [
-                    'class' => 'form-control',
+                    'class' => 'form-control w-auto',
                 ]
             ])
             ->add('_password', PasswordType::class, [
                 'attr' => [
-                    'class' => 'form-control',
+                    'class' => 'form-control w-auto',
                 ]
             ])
             ->add('captcha', Recaptcha3Type::class, [

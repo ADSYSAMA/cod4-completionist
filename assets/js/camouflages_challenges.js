@@ -32,11 +32,11 @@ $(document).ready(function () {
 		}
 
 		$.ajax({
-			type: "POST",
+			type: 'POST',
 			url: '/challenges/' + (clickedCamouflageIsChecked === true ? 'complete' : 'remove'),
 			data: {
-				"challenges": challengesArray
-			},
+				'challenges': challengesArray
+			}
 		});
 	})
 
@@ -50,17 +50,18 @@ $(document).ready(function () {
 		}
 
 		let challengesArray = [];
+		challengesArray.push(camouflageWeapon.data('id'))
 		camouflages.each(function (index, camouflage) {
 			challengesArray.push($(this).data('id'))
 		})
 
 		let checked = camouflageWeapon.hasClass('checked');
 		$.ajax({
-			type: "POST",
+			type: 'POST',
 			url: '/challenges/' + (checked === true ? 'complete' : 'remove'),
 			data: {
-				"challenges": challengesArray
-			},
+				'challenges': challengesArray
+			}
 		});
 	})
 })
