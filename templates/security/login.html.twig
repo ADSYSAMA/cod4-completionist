@@ -10,24 +10,19 @@
             You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
         </div>
     {% else %}
-        <form method="post">
-            {% if error %}
-                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-            {% endif %}
+        {{ form_errors(loginForm) }}
 
-            <label for="username">Email</label>
-            <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
+        {{ form_start(loginForm) }}
 
-            <label for="password">Password</label>
-            <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+        {{ form_row(loginForm._username, {
+            label: 'Email'
+        }) }}
+        {{ form_row(loginForm._password, {
+            label: 'Password'
+        }) }}
 
-            <input type="hidden" name="_csrf_token"
-                   value="{{ csrf_token('authenticate') }}"
-            >
+        <button type="submit" class="btn btn-primary mt-2">Register</button>
 
-            <button class="btn btn-primary mt-2" type="submit">
-                Sign in
-            </button>
-        </form>
+        {{ form_end(loginForm) }}
     {% endif %}
 {% endblock %}
